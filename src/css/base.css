@@ -1,7 +1,11 @@
+/* Importação de Fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400&display=swap');
+
+/* Reset Básico */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box; /* Garante que padding e border sejam incluídos na largura/altura total */
 }
 
 /* Estilos Globais */
@@ -9,23 +13,23 @@ body {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #f4f4f4;
+    background-color: #f4f4f4; /* Fundo suave */
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
-    color: #2c3e50;
+    color: #2c3e50; /* Cor mais escura para títulos */
     margin-bottom: 0.8em;
 }
 
 a {
-    color: #27ae60;
+    color: #27ae60; /* Verde vibrante para links */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #2ecc71;
+    color: #2ecc71; /* Verde mais claro no hover */
 }
 
 ul {
@@ -35,7 +39,7 @@ ul {
 img {
     max-width: 100%;
     height: auto;
-    display: block;
+    display: block; /* Remove espaço extra abaixo das imagens */
 }
 
 /* --- Cabeçalho e Navegação --- */
@@ -66,13 +70,13 @@ img {
 
 .nav-list {
     display: flex;
-    gap: 25px;
+    gap: 25px; /* Espaçamento entre os itens da lista */
 }
 
 .nav-list li a {
     font-weight: 600;
     padding: 5px 0;
-    position: relative;
+    position: relative; /* Para o efeito de sublinhado */
 }
 
 .nav-list li a::after {
@@ -86,7 +90,21 @@ img {
     transition: width 0.3s ease-in-out;
 }
 
-/* --- Seções Principais --- */
+.nav-list li a:hover::after,
+.nav-list li a.active::after { /* Adicione a classe 'active' para a página atual */
+    width: 100%;
+}
+
+.mobile-menu-toggle {
+    display: none; /* Escondido por padrão em desktop */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+}
+
+/* --- Seções Principais (Estrutura Básica) --- */
 main {
     max-width: 1200px;
     margin: 20px auto;
@@ -111,13 +129,13 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 400px; 
+    min-height: 400px; /* Altura mínima para a seção */
 }
 
 .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 15px;
-    color: #fff;
+    color: #fff; /* Título branco */
 }
 
 .hero-content .slogan {
@@ -143,11 +161,10 @@ section {
     transform: translateY(-2px); /* Pequeno efeito de elevação */
 }
 
-
 /* --- Seção de Artigos em Destaque --- */
 .articles-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Layout responsivo com grid */
     gap: 25px;
     margin-top: 30px;
 }
@@ -236,7 +253,7 @@ section {
     background-color: #2ecc71;
 }
 
-.sr-only {
+.sr-only { /* Para rótulos que devem ser lidos apenas por leitores de tela */
     position: absolute;
     width: 1px;
     height: 1px;
@@ -250,8 +267,8 @@ section {
 
 /* --- Rodapé --- */
 .main-footer {
-    background-color: #2c3e50;
-    color: #ecf0f1;
+    background-color: #2c3e50; /* Azul escuro */
+    color: #ecf0f1; /* Texto claro */
     padding: 40px 20px 20px;
     font-size: 0.9rem;
 }
@@ -262,12 +279,12 @@ section {
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto 30px;
-    gap: 30px;
+    gap: 30px; /* Espaçamento entre as colunas do rodapé */
 }
 
 .footer-section {
-    flex: 1;
-    min-width: 250px; 
+    flex: 1; /* Permite que as seções se expandam */
+    min-width: 250px; /* Largura mínima para cada seção */
 }
 
 .footer-section h3 {
@@ -301,7 +318,7 @@ section {
     width: 30px;
     height: 30px;
     margin-right: 10px;
-    filter: invert(100%);
+    filter: invert(100%); /* Deixa os ícones brancos */
     transition: transform 0.3s ease;
 }
 
@@ -315,4 +332,96 @@ section {
     padding-top: 20px;
     margin-top: 20px;
     color: #bdc3c7;
+}
+
+/* --- Media Queries para Responsividade --- */
+
+/* Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        flex-wrap: wrap; /* Permite que o logo e o menu quebrem linha */
+    }
+
+    .logo {
+        margin-bottom: 10px;
+    }
+
+    .nav-list {
+        display: none; /* Esconde o menu de navegação por padrão em mobile */
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: absolute; /* Para que o menu fique abaixo do cabeçalho */
+        top: 60px; /* Ajuste conforme a altura do cabeçalho */
+        left: 0;
+        padding: 20px 0;
+        border-radius: 0 0 8px 8px;
+    }
+
+    .nav-list.active { /* Classe para mostrar o menu quando o toggle for clicado */
+        display: flex;
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+    }
+
+    .mobile-menu-toggle {
+        display: block; /* Mostra o botão de menu em mobile */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content .slogan {
+        font-size: 1.2rem;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas pequenas */
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-section {
+        min-width: unset; /* Remove o min-width em mobile */
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Pequenas otimizações para telas muito pequenas */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 0 15px;
+    }
+
+    .hero-section {
+        padding: 60px 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content .slogan {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+    }
+
+    .newsletter-form input[type="email"],
+    .newsletter-form button {
+        width: 100%; /* Ocupa a largura total em telas muito pequenas */
+    }
 }
