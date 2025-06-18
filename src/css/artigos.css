@@ -1,0 +1,257 @@
+/* Importa o base.css para estilos globais e padronização de header/footer */
+@import url('base.css');
+
+/* Estilos Específicos para a Página de Artigos */
+
+/* --- Seção Hero Artigos --- */
+.hero-artigos {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../img/artigos-hero-bg.jpg') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    min-height: 250px; /* Altura mínima para o hero */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-artigos h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.hero-artigos p {
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+
+/* --- Layout Principal dos Artigos (Grid com Sidebar) --- */
+.articles-section {
+    padding: 20px 0; /* Padding da seção principal */
+}
+
+.articles-layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Coluna principal (artigos) maior, sidebar menor */
+    gap: 30px; /* Espaçamento entre as colunas */
+    align-items: start; /* Alinha o conteúdo ao topo */
+}
+
+.main-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Espaçamento entre os blocos da sidebar */
+}
+
+.sidebar-block {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-block h3 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee; /* Linha sutil para separar */
+    padding-bottom: 10px;
+}
+
+.sidebar-block ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar-block ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar-block ul li a {
+    color: #555;
+    font-size: 1rem;
+    display: block; /* Garante que o link ocupe toda a linha */
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.sidebar-block ul li a:hover {
+    color: #27ae60;
+    text-decoration: underline;
+}
+
+/* Estilo para a Chamada para Ação na Sidebar */
+.sidebar-block.call-to-action {
+    background-color: #e8f8f5; /* Um verde bem suave para o CTA */
+    text-align: center;
+}
+
+.sidebar-block.call-to-action p {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.cta-sidebar-button {
+    display: inline-block;
+    background-color: #27ae60;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.cta-sidebar-button:hover {
+    background-color: #2ecc71;
+    transform: translateY(-2px);
+    color: #fff;
+}
+
+
+/* --- Grid de Artigos (dentro do main-content) --- */
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Layout flexível de cards */
+    gap: 30px; /* Espaçamento entre os cards */
+}
+
+.article-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden; /* Garante que a imagem arredondada não vaze */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.article-card img {
+    width: 100%;
+    height: 220px; /* Altura fixa para as imagens dos cards */
+    object-fit: cover; /* Recorta a imagem para cobrir a área */
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.article-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+    line-height: 1.3;
+}
+
+.article-meta {
+    font-size: 0.85rem;
+    color: #777;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.article-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.read-more-button {
+    display: inline-block;
+    background-color: #27ae60;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.read-more-button:hover {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+/* --- Media Queries para Responsividade --- */
+
+/* Ajustes para Tablets e Mobile */
+@media (max-width: 992px) {
+    .articles-layout {
+        grid-template-columns: 1fr; /* Uma única coluna em telas menores */
+    }
+
+    .main-content, .sidebar-block {
+        padding: 25px; /* Reduz o padding interno */
+    }
+
+    .sidebar {
+        flex-direction: row; /* Coloca os blocos da sidebar lado a lado em tablets */
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-artigos h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-artigos p {
+        font-size: 1.1rem;
+    }
+
+    .articles-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Ajusta o min-width dos cards */
+    }
+
+    .sidebar {
+        flex-direction: column; /* Volta para coluna em telas menores */
+    }
+
+    .main-content {
+        order: 2; /* Move o conteúdo principal para baixo da sidebar em mobile */
+    }
+
+    .sidebar {
+        order: 1; /* Move a sidebar para cima do conteúdo principal em mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-artigos {
+        padding: 60px 15px;
+    }
+    
+    .hero-artigos h1 {
+        font-size: 2rem;
+    }
+
+    .articles-grid {
+        grid-template-columns: 1fr; /* Uma única coluna para cards em telas muito pequenas */
+    }
+
+    .article-card img {
+        height: 180px; /* Reduz a altura das imagens dos cards em mobile */
+    }
+
+    .card-content {
+        padding: 15px;
+    }
+
+    .article-card h3 {
+        font-size: 1.4rem;
+    }
+}
